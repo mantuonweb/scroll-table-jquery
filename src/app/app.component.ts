@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+declare var $;
 
 @Component({
   selector: 'my-app',
@@ -9,6 +10,7 @@ export class AppComponent {
   name = 'Angular';
   rows=[];
   constructor(){
+    console.log($)
     this.rows = this.gerRows();
   }
   makeid(length) {
@@ -37,5 +39,10 @@ export class AppComponent {
   }
   getNumber(){
     return Math.ceil(Math.floor(Math.random() * 20));
+  }
+  ngAfterViewInit(){
+    let $head = $('.scroll-table-header table');
+    let $body = $('.scroll-table-body table')
+    console.log('mantu',$head,$body)
   }
 }

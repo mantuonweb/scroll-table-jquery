@@ -1,3 +1,9 @@
-p {
-  font-family: Lato;
+
+.scroll-table-container{
+  width:90%;
+  margin:auto;
+}
+.scroll-table-body{
+  height: 500px;
+  overflow-y: auto;
 }
