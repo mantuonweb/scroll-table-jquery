@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { jQuery } from 'jquery'
+import * as $ from 'jquery';
 
 @Component({
   selector: 'my-app',
@@ -40,9 +40,9 @@ export class AppComponent {
     return Math.ceil(Math.floor(Math.random() * 20));
   }
   ngAfterViewInit(){
-    console.log(jQuery)
-    let $head = jQuery('.scroll-table-header table');
-    let $body = jQuery('.scroll-table-body table')
+    console.log($)
+    let $head = $('.scroll-table-header table');
+    let $body = $('.scroll-table-body table')
     console.log('mantu',$head,$body)
   }
 }
