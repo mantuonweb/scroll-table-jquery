@@ -5,8 +5,8 @@
       <div class="filter-item-container">
         <div class="filter-item">
           <select class="filter-type">
-            <option *ngFor="let item of filterTypes">
-              {{item}}
+            <option *ngFor="let item of filterTypes" [ngValue]="item.name">
+              {{item.displayName}}
             </option>
           </select>
           <br>
