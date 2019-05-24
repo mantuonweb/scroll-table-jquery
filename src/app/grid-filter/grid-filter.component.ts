@@ -17,10 +17,10 @@ export const GRID_FILTER_VALUE_ACCESSOR: any = {
 })
 export class GridFilterComponent implements OnInit, ControlValueAccessor {
   filterValue;
-  condition1;
-  condition2;
-  condition1Value = 'contains';
-  condition2Value = 'contains';
+  condition1  = 'contains';
+  condition2 = 'contains';
+  condition1Value;
+  condition2Value;
   operator = 'OR';
 
   filterTypes = [{

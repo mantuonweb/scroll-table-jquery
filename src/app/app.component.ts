@@ -9,6 +9,7 @@ import $ from 'jquery';
 export class AppComponent {
   name = 'Angular';
   rows=[];
+  filter
   filterTypes =['contains', 'notContains', 'equals', 'notEqual', 'startsWith', 'endsWith']
   constructor(){
     console.log($('div'),'jq');

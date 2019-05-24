@@ -43,4 +43,6 @@
 </div> -->
 
 
-<app-grid-filter></app-grid-filter>
+<app-grid-filter [(ngModel)]="filter"></app-grid-filter>
+
+{{filter|json}}
