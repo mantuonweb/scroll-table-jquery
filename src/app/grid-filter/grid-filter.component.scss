@@ -1,0 +1,23 @@
+
+.filter-item-container{
+    .filter-item{
+      select,input{
+        width: 200px;
+        margin: 5px 10px;
+      }
+    }
+    .filter-condition{
+        width: 200px;
+        margin: 5px 10px;
+        .radio-next-option{
+          margin-left:10px;
+        }
+        label{
+          cursor: pointer;
+          margin-bottom: 0;
+        }
+        .filter-condition-options{
+           margin: 0 10px;
+        }
+    }
+}

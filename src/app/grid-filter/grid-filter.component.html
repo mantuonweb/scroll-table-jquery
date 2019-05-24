@@ -1,0 +1,48 @@
+<div class="dropdown" [ngClass]="{'show':isOpen}">
+	<button class="btn btn-primary dropdown-toggle" (click)="isOpen=!isOpen" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <div class="dropdown-menu" [ngClass]="{'show':isOpen}">
+      <div class="filter-item-container">
+        <div class="filter-item">
+          <select class="filter-type">
+            <option *ngFor="let item of filterTypes">
+              {{item}}
+            </option>
+          </select>
+          <br>
+          <input type="text" class="filter-value" placeholder="Filter..."> 
+        </div>
+        <div class="filter-condition">
+          <label class="radio-inline"><input class="filter-condition-options" type="radio" name="operator" checked>AND</label>
+          <label class="radio-inline radio-next-option"><input  class="filter-condition-options" type="radio" name="operator">OR</label>
+        </div>
+         <div class="filter-item">
+          <select class="filter-type">
+            <option *ngFor="let item of filterTypes">
+              {{item}}
+            </option>
+          </select>
+          <br>
+          <input type="text" class="filter-value" placeholder="Enter filter value"> 
+        </div>
+      </div>
+    <!-- <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li> -->
+    <!-- {
+    condition1:{
+        type:'endsWith',
+        filter:'thing'
+    },
+    condition2:{
+        type:'startsWith',
+        filter:'some'
+    },
+    // one of 'AND' / 'OR'
+    operator:'AND'
+
+} -->
+    <!-- contains notContains equals notEqual startsWith endsWith -->
+   
+  </div>
+</div>
