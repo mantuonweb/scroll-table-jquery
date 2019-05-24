@@ -19,8 +19,8 @@ export class GridFilterComponent implements OnInit, ControlValueAccessor {
   filterValue;
   condition1;
   condition2;
-  condition1Value;
-  condition2Value;
+  condition1Value = 'contains';
+  condition2Value = 'contains';
   operator = 'OR';
 
   filterTypes = [{
@@ -92,6 +92,10 @@ export class GridFilterComponent implements OnInit, ControlValueAccessor {
       }
       filterModel['operator']=this.operator;
     }
+    return filterModel;
+  }
+  applyFilter(){
+    this.value = this.getFilterModel();
   }
   // <li><a href="#">HTML</a></li>
   //   <li><a href="#">CSS</a></li>

@@ -1,3 +1,4 @@
+{{value|json}}
 <div class="dropdown" [ngClass]="{'show':isOpen}">
 	<button class="btn btn-primary dropdown-toggle" (click)="isOpen=!isOpen" type="button" data-toggle="dropdown">Dropdown Example
   <span class="caret"></span></button>
@@ -24,6 +25,10 @@
           </select>
           <br>
           <input type="text" class="filter-value" placeholder="Filter..." [(ngModel)]="condition2Value"> 
+        </div>
+        <div class="actions-button text-right">
+          <button type="button" class="btn btn-secondary btn-sm">Cancel</button>
+          <button type="button" class="btn btn-primary btn-sm" [disabled]="!(condition1 && condition1Value)" (click)="applyFilter()">Apply</button>
         </div>
       </div>
   </div>
