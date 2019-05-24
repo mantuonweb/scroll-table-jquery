@@ -97,6 +97,15 @@ export class GridFilterComponent implements OnInit, ControlValueAccessor {
   applyFilter(){
     this.value = this.getFilterModel();
   }
+  cancelFilter(){
+    this.value = null;
+    this.resetOptions();
+  }
+  resetOptions(){
+    this.condition1Value = '';
+    this.condition2Value = '';
+    this.operator = 'OR';
+  }
   // <li><a href="#">HTML</a></li>
   //   <li><a href="#">CSS</a></li>
   //   <li><a href="#">JavaScript</a></li> -->
