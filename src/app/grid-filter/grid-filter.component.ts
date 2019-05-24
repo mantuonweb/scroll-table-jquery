@@ -1,33 +1,75 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, forwardRef, HostListener } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 //https://www.ag-grid.com/javascript-grid-filter-text/
+const noop = () => {
+};
+export const GRID_FILTER_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => GridFilterComponent),
+  multi: true
+};
+
 @Component({
   selector: 'app-grid-filter',
   templateUrl: './grid-filter.component.html',
-  styleUrls: ['./grid-filter.component.scss']
+  styleUrls: ['./grid-filter.component.scss'],
+  providers: [GRID_FILTER_VALUE_ACCESSOR]
 })
-export class GridFilterComponent implements OnInit {
+export class GridFilterComponent implements OnInit, ControlValueAccessor {
+  filterValue;
   filterTypes = [{
-    name:'contains',
-    displayName:'Contains',
-  },{
-    name:'notContains',
-    displayName:'notContains',
-  },{
-    name:'equals',
-    displayName:'equals',
-  },{
-    name:'notEqual',
-    displayName:'notEqual',
-  },{
-    name:'startsWith',
-    displayName:'startsWith',
-  },{
-    name:'endsWith',
-    displayName:'endsWith',
+    name: 'equals',
+    displayName: 'Equals',
+  }, {
+    name: 'notEqual',
+    displayName: 'Not Equals',
+  }, {
+    name: 'startsWith',
+    displayName: 'Starts With',
+  }, {
+    name: 'endsWith',
+    displayName: 'Ends With',
+  }, {
+    name: 'contains',
+    displayName: 'Contains',
+  }, {
+    name: 'notContains',
+    displayName: 'Not Contains',
   }];
   constructor() { }
 
   ngOnInit() {
+  }
+  private onTouchedCallback: () => void = noop;
+  private onChangeCallback: (_: any) => void = noop;
+
+  //get accessor
+  get value(): any {
+    return this.filterValue;
+  };
+
+  //set accessor including call the onchange callback
+  set value(v: any) {
+    if (v !== this.filterValue) {
+      this.filterValue = v;
+      this.onChangeCallback(v);
+    }
+  }
+  //From ControlValueAccessor interface
+  writeValue(value: any) {
+    if (value !== this.filterValue) {
+      this.filterValue = value;
+    }
+  }
+
+  //From ControlValueAccessor interface
+  registerOnChange(fn: any) {
+    this.onChangeCallback = fn;
+  }
+
+  //From ControlValueAccessor interface
+  registerOnTouched(fn: any) {
+    this.onTouchedCallback = fn;
   }
 
 }
