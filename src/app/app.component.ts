@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-declare var $;
+import $ from 'jquery';
 
 @Component({
   selector: 'my-app',
@@ -9,8 +9,9 @@ declare var $;
 export class AppComponent {
   name = 'Angular';
   rows=[];
+  filterTypes =['contains', 'notContains', 'equals', 'notEqual', 'startsWith', 'endsWith']
   constructor(){
-    console.log($,'jq');
+    console.log($('div'),'jq');
   }
   // makeid(length) {
   //   var text = "";
