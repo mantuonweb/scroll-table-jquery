@@ -17,6 +17,12 @@ export const GRID_FILTER_VALUE_ACCESSOR: any = {
 })
 export class GridFilterComponent implements OnInit, ControlValueAccessor {
   filterValue;
+  condition1;
+  condition2;
+  condition1Value;
+  condition2Value;
+  operator = 'OR';
+
   filterTypes = [{
     name: 'equals',
     displayName: 'Equals',
@@ -71,5 +77,34 @@ export class GridFilterComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any) {
     this.onTouchedCallback = fn;
   }
-
+  getFilterModel() {
+    let filterModel = {};
+    if (this.condition1Value) {
+      filterModel['condition1'] = {
+        type: this.condition1,
+        filter: this.condition1Value
+      }
+    }
+    if (this.condition2Value) {
+      filterModel['condition2'] = {
+        type: this.condition2,
+        filter: this.condition2Value
+      }
+      filterModel['operator']=this.operator;
+    }
+  }
+  // <li><a href="#">HTML</a></li>
+  //   <li><a href="#">CSS</a></li>
+  //   <li><a href="#">JavaScript</a></li> -->
+  //   <!-- {
+  //   condition1:{
+  //       type:'endsWith',
+  //       filter:'thing'
+  //   },
+  //   condition2:{
+  //       type:'startsWith',
+  //       filter:'some'
+  //   },
+  //   // one of 'AND' / 'OR'
+  //   operator:'AND'
 }

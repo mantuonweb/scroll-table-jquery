@@ -4,45 +4,27 @@
   <div class="dropdown-menu" [ngClass]="{'show':isOpen}">
       <div class="filter-item-container">
         <div class="filter-item">
-          <select class="filter-type">
+          <select class="filter-type" [(ngModel)]="condition1">
             <option *ngFor="let item of filterTypes" [ngValue]="item.name">
               {{item.displayName}}
             </option>
           </select>
           <br>
-          <input type="text" class="filter-value" placeholder="Filter..."> 
+          <input type="text" class="filter-value" placeholder="Filter..." [(ngModel)]="condition1Value"> 
         </div>
-        <div class="filter-condition">
-          <label class="radio-inline"><input class="filter-condition-options" type="radio" name="operator" checked>AND</label>
-          <label class="radio-inline radio-next-option"><input  class="filter-condition-options" type="radio" name="operator">OR</label>
+        <div class="filter-condition" *ngIf="condition1Value">
+          <label class="radio-inline"><input class="filter-condition-options" type="radio" name="operator" checked value="AND" [(ngModel)]="operator">AND</label>
+          <label class="radio-inline radio-next-option"><input  class="filter-condition-options" type="radio" name="operator" value="OR" [(ngModel)]="operator">OR</label>
         </div>
-         <div class="filter-item">
-         <select class="filter-type">
+         <div class="filter-item" *ngIf="condition1Value">
+          <select class="filter-type" [(ngModel)]="condition2">
             <option *ngFor="let item of filterTypes" [ngValue]="item.name">
               {{item.displayName}}
             </option>
           </select>
           <br>
-          <input type="text" class="filter-value" placeholder="Filter..."> 
+          <input type="text" class="filter-value" placeholder="Filter..." [(ngModel)]="condition2Value"> 
         </div>
       </div>
-    <!-- <li><a href="#">HTML</a></li>
-    <li><a href="#">CSS</a></li>
-    <li><a href="#">JavaScript</a></li> -->
-    <!-- {
-    condition1:{
-        type:'endsWith',
-        filter:'thing'
-    },
-    condition2:{
-        type:'startsWith',
-        filter:'some'
-    },
-    // one of 'AND' / 'OR'
-    operator:'AND'
-
-} -->
-    <!-- contains notContains equals notEqual startsWith endsWith -->
-   
   </div>
 </div>
