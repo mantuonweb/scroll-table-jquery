@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+declare var $;
 
 @Component({
   selector: 'my-app',
@@ -10,7 +10,7 @@ export class AppComponent {
   name = 'Angular';
   rows=[];
   constructor(){
-    // this.rows = this.gerRows();
+    console.log($,'jq');
   }
   // makeid(length) {
   //   var text = "";
